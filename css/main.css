@@ -1063,7 +1063,7 @@ pre .javascript .function {
   right: 30px;
   z-index: 1050;
   padding: 0 6px;
-  width: initial;
+  width: 24px;
   background: #222;
   font-size: 12px;
   opacity: 1;
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff9482;
+  background: #14edf7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2728,19 +2728,13 @@ canvas {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.sidebar {
-  background-position-y: 1vh;
-  background-repeat: no-repeat;
-  background-repeat-x: no-repeat;
-  background-repeat-y: no-repeat;
-}
 .header-inner {
   padding-top: 1px;
   padding-bottom: 0px;
 }
 .header {
   color: #999;
-  margin-top: 80px;
+  margin-top: 0px;
   background: #f5f5f5;
   color: #666;
   background: none;
@@ -2811,8 +2805,11 @@ canvas {
   color: #a166ab;
   font-weight: bold;
 }
-hr {
-  margin: 10px 0px 30px 0px;
+#heart {
+  animation: heartAnimate 1.33s ease-in-out infinite;
+}
+.with-love {
+  color: #ff71a8;
 }
 .sidebar-toggle {
   right: 10px;
@@ -2823,6 +2820,20 @@ hr {
 }
 .page-post-detail .sidebar-toggle-line {
   background: #07b39b;
+}
+.back-to-top {
+  line-height: 1.5;
+  right: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  background-color: rgba(247,149,51,0.75);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+}
+.back-to-top.back-to-top-on {
+  bottom: 10px;
 }
 .sidebar {
   box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.5);
@@ -2880,22 +2891,6 @@ img:hover {
   margin-left: 13px;
   color: #f37055;
 }
-.site-state {
-  line-height: 1.3;
-  margin-left: 12px;
-}
-.site-state-item {
-  padding: 0px 15px;
-  border-left: 1.5px solid #a166ab;
-}
-.posts-collapse {
-  margin: 50px 0px;
-}
-@media (max-width: 1023px) {
-  .posts-collapse {
-    margin: 50px 20px;
-  }
-}
 .posts-collapse::after {
   margin-left: -2px;
   background-image: linear-gradient(180deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);
@@ -2927,26 +2922,6 @@ img:hover {
   opacity: 1;
   background-color: #fff;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-}
-.back-to-top {
-  line-height: 1.5;
-  right: 10px;
-  padding-right: 5px;
-  padding-left: 5px;
-  padding-top: 2.5px;
-  padding-bottom: 2.5px;
-  background-color: rgba(247,149,51,0.75);
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
-}
-.back-to-top.back-to-top-on {
-  bottom: 10px;
-}
-#heart {
-  animation: heartAnimate 1.33s ease-in-out infinite;
-}
-.with-love {
-  color: #ff71a8;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
