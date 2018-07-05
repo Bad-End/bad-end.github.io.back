@@ -122,7 +122,7 @@
 
 
 
-  <title>友链 | Bad End's Blog</title>
+  <title>二分图学习笔记 | Bad End's Blog</title>
   
 
 
@@ -260,59 +260,162 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://bad-end.github.io/article/bipartite-graph/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bad End">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bad End's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h2 class="post-title" itemprop="name headline">友链</h2>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <table>
-<thead>
-<tr>
-<th style="text-align:center">姓名</th>
-<th style="text-align:center">学校</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="http://aor.sd.cn" target="_blank" rel="noopener">吴雨航</a></td>
-<td style="text-align:center">临沂实验中学</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://handwer-blog.github.io" target="_blank" rel="noopener">王子鸣</a></td>
-<td style="text-align:center">临沂第六中学</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="https://blog-shq.github.io" target="_blank" rel="noopener">单红旗</a></td>
-<td style="text-align:center">临沂第六中学</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://masellum.me" target="_blank" rel="noopener">郭瀚文</a></td>
-<td style="text-align:center">临沂第一中学</td>
-</tr>
-</tbody>
-</table>
-
+          <h2 class="post-title" itemprop="name headline">二分图学习笔记</h2>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-05T15:50:54+08:00">2018-07-05</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>二分图又称二部图，是图论中一种特殊模型。对于一个无向图，如果可以把他的顶点分为两个互不相交的子集，并且图中的每一条边，所关联的两个顶点都分别属于两个不同的顶点集，则称该图为二分图。显然二分图中不存在奇数环，如果出现的话无法被划分到任何任何集合里。<br><a id="more"></a></p>
+<h1 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h1><p>通过$ dfs $或者$ bfs $ 对一张图染色（即染色法，共有两种颜色），对于每一条边，使其两个节点的颜色不同。当一个点的颜色已经被确定时，该结点的颜色与当前应该染的颜色冲突，则说明这张图不是二分图。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> color)</span> </span>&#123;<span class="comment">//u为当前遍历到的结点，color为该点应该染的颜色，用1， 2来表示</span></span><br><span class="line">    <span class="keyword">if</span> (col[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (col[u] != color) <span class="keyword">return</span>;<span class="comment">//说明这张图不是二分图</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        col[u] = color;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> e = head[u]; e; e = edge[e].next) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = edge[e].t;</span><br><span class="line">        dfs(v, <span class="number">3</span> - color);<span class="comment">//边的两个端点颜色不同</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><h2 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h2><p>在图论中，一个「匹配」是一个边的集合，其中任意两条边都没有公共顶点。（如图三红边）<br><img src="https://i.loli.net/2018/07/05/5b3ddcb139508.png" alt="1.png"> <img src="https://i.loli.net/2018/07/05/5b3ddcb144938.png" alt="2.png">   <img src="https://i.loli.net/2018/07/05/5b3ddcb145f58.png" alt="3.png">   <img src="https://i.loli.net/2018/07/05/5b3ddcb14751d.png" alt="4.png"><br>相应的，属于「匹配」的边为匹配边，不属于匹配的边为为匹配的边。与匹配边相连的点为匹配点，反之则为未匹配点。  </p>
+<h2 id="最大匹配"><a href="#最大匹配" class="headerlink" title="最大匹配"></a>最大匹配</h2><p>一个图所有匹配中，所含匹配边数最多的匹配，称为这个图的最大匹配。例如图四所示的红边，注意一张图的最大匹配方案不一定唯一。 （见图四） </p>
+<h2 id="完美匹配"><a href="#完美匹配" class="headerlink" title="完美匹配"></a>完美匹配</h2><p>对于一张图的某个匹配来说，如果该图的所有点都是匹配点，那么称该匹配为该图的「完美匹配」（图四）。显然，完美匹配一定是最大匹配。  </p>
+<h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p>一种求最大匹配的算法。</p>
+<h2 id="交叉路"><a href="#交叉路" class="headerlink" title="交叉路"></a>交叉路</h2><p>从一个未匹配点出发，<strong>依次</strong>经过未匹配边、匹配边、未匹配边、匹配边……最终到达另一个点的路径。特别的，一条未匹配边与两个未匹配点组成的路径也是交叉路  </p>
+<h2 id="增广路"><a href="#增广路" class="headerlink" title="增广路"></a>增广路</h2><p>最后一个端点为未匹配点的交叉路。特别的，一条未匹配边与两个未匹配点组成的路径也是增广路。增广路的首位两条边都是未匹配边，首尾两个点都是未匹配点，并且边数一定是奇数。既然是奇数，那么增广路中的未匹配边一定比匹配边多一条。  </p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>根据增广路中未匹配边比匹配边多一条的性质，那么只要把增广路中的边的身份翻转，得到的新的匹配中的边数就会多一。因此匈牙利算法实质上是在不断地找增广路来改进当前的匹配。由此得出，最大匹配中一定不存在增广路，如果有增广路的话，该匹配就可以改进，就不是最大匹配了。</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>从二分图的一边开始，以每个点为起点进行$ dfs $或者$ bfs $，每当搜索到一条增广路时，结束搜索。那么显然以一个点为起点只能找到一条增广路。每找到一条增广路，匹配数便加一。注意实际实现的时候并没有把边标记为匹配边与未匹配边。连接两个匹配点的路径显然是匹配边。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> e = head[u]; e; e = edge[e].next) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = edge[e].t;</span><br><span class="line">        <span class="keyword">if</span> (!vis[v]) &#123;<span class="comment">//vis数组用来标记该点有没有在本次dfs中被遍历过</span></span><br><span class="line">            vis[v] = <span class="literal">true</span>;<span class="comment">//更改状态，标记为遍历过</span></span><br><span class="line">            <span class="keyword">if</span> (!pre[v] ||dfs(pre[v])) &#123;<span class="comment">//pre数组记录该匹配边中的另一个点，</span></span><br><span class="line">                <span class="comment">//如果为空的话显然就是一条增广路。如果不为空，则遍历该数组中记录的点，并返回能否找到增广路</span></span><br><span class="line">                pre[v] = u;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//已经找到增广路了，结束遍历，返回结果。</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//未找到增广路</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h2><p><strong>最大匹配数</strong>：最大匹配的边数。<br><strong>最小点覆盖数</strong>：尽可能少地选择一些点，使得图中任意一条边都至少有一个顶点被选择。<br><strong>最小路径覆盖数</strong>：对于一张$ DAG $，选取最少的简单路径数，使得每个顶点只属于一条路径。路径可以仅由一个点组成。换言之，按照这样的路径能遍历到所有的点，且每个点仅被遍历一次。<br><strong>最大独立集</strong>：选取最多的点，这些点彼此之间没有连边。<br><strong>最大团</strong>：当且仅当该子图是一张完全图（任意两个点之间都有边的图），且该子图不属于该图中的任何完全子图时为该图的最大团。  </p>
+<h3 id="最小点覆盖数"><a href="#最小点覆盖数" class="headerlink" title="最小点覆盖数"></a>最小点覆盖数</h3><p>最小点覆盖数 = 最大匹配数（konig定理）。<br>证明过于复杂，因此不在此贴出，请自行百度。</p>
+<h3 id="最大独立集"><a href="#最大独立集" class="headerlink" title="最大独立集"></a>最大独立集</h3><p>最大独立集的点数 = 点数 - 最大匹配数（或者最小点覆盖数）<br>这条定理可以用反证法证明，需要一点前置知识，阅读以下内容之前请务必理解如何证明最小点覆盖数 = 最大匹配这条定理，以及二分图的最小路径覆盖点集如何求出。<br>如果你已经准备好了，那请继续阅读。<br>把二分图的最小点覆盖集删除之后，剩余的点之间如果边，那么最小点覆盖集必然无法覆盖这些边。但是最小点覆盖集必然可以覆盖所有的边，所以上述与最小点覆盖集的性质冲突，故不成立，即最小点覆盖集以外的点之间必然没有边。所以：最大独立集的点数 = 点数 - 最小点覆盖数。又因为最小点覆盖数 = 最大匹配得，所以：最大独立集的点数 = 点数 - 最大匹配数。  </p>
+<h3 id="最小路径覆盖"><a href="#最小路径覆盖" class="headerlink" title="最小路径覆盖"></a>最小路径覆盖</h3><p>最小路径覆盖数 = 点数 - 相应二分图的最大匹配数<br>把无向图的每个点拆成两个，分别属于构造出的二分图的两边（对于点$ x $，由 $ x $拆得的左边的点与右边的点分别为 $x_1， x_2 $）。设有边$ (u, v) $，那么在二分图中便有边$ (u_1, v_2) $。因为原图是$ DAG $， 那么每条路径上的点除终点之外，都有且仅有一个后继。假设点都各自是一条路径，那么路径数与点数相同。二分图中每有一条匹配边，便会使一个点有且仅有一个后继。这也意味着这个点不能成为路径的终点。而路径有唯一的终点，所以每有一个匹配，路径便会少一。那么便能得到：最小路径覆盖数 = 点数 - 相应二分图的最大匹配数   </p>
+<h3 id="最大团"><a href="#最大团" class="headerlink" title="最大团"></a>最大团</h3><p>最大团点数 = 点数 - 相应的补图的最大匹配数<br>构造出该无向图的补图后，最大团实际上就是补图的最大独立集， 故有：最大团点数 = 点数 - 相应的补图的最大匹配数。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/二分图/" rel="tag"># 二分图</a>
+          
+            <a href="/tags/匈牙利算法/" rel="tag"># 匈牙利算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/article/tree-chain-split/" rel="next" title="【模板】树链剖分">
+                <i class="fa fa-chevron-left"></i> 【模板】树链剖分
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -342,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -426,6 +538,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#判断"><span class="nav-number">1.</span> <span class="nav-text">判断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">3.</span> <span class="nav-text">定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配"><span class="nav-number">3.1.</span> <span class="nav-text">匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大匹配"><span class="nav-number">3.2.</span> <span class="nav-text">最大匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完美匹配"><span class="nav-number">3.3.</span> <span class="nav-text">完美匹配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匈牙利算法"><span class="nav-number">4.</span> <span class="nav-text">匈牙利算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉路"><span class="nav-number">4.1.</span> <span class="nav-text">交叉路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增广路"><span class="nav-number">4.2.</span> <span class="nav-text">增广路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">4.3.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">4.4.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">4.5.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关定义"><span class="nav-number">4.6.</span> <span class="nav-text">相关定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小点覆盖数"><span class="nav-number">4.6.1.</span> <span class="nav-text">最小点覆盖数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大独立集"><span class="nav-number">4.6.2.</span> <span class="nav-text">最大独立集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小路径覆盖"><span class="nav-number">4.6.3.</span> <span class="nav-text">最小路径覆盖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大团"><span class="nav-number">4.6.4.</span> <span class="nav-text">最大团</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

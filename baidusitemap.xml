@@ -4,6 +4,25 @@
 
     
   <url>
+    <loc>http://bad-end.github.io/article/bipartite-graph/</loc>
+    <lastmod>2018-07-05T13:12:36.724Z</lastmod>
+    <data>
+        <display>
+        <title>二分图学习笔记</title>
+        <pubTime>2018-07-05T07:50:54.000Z</pubTime>
+        
+        <tag>二分图</tag>
+         
+        <tag>匈牙利算法</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://bad-end.github.io/article/tree-chain-split/</loc>
     <lastmod>2018-06-22T14:44:38.104Z</lastmod>
     <data>
@@ -11,9 +30,9 @@
         <title>【模板】树链剖分</title>
         <pubTime>2018-06-22T14:00:41.000Z</pubTime>
         
-        <tag>线段树</tag>
-         
         <tag>树链剖分</tag>
+         
+        <tag>线段树</tag>
          
          
            
